@@ -1,0 +1,26 @@
+---
+# Deploy from the project's Git repository.
+drupal_deploy: true
+drupal_deploy_repo: "git@bitbucket.org:jazzper23/wwwnginx.git"
+drupal_deploy_dir: /var/www/wwwnginx
+
+# Use composer.json.
+drupal_build_composer_project: false
+drupal_build_composer: true
+drupal_composer_path: false
+drupal_composer_install_dir: "/var/www/wwwnginx"
+drupal_core_path: "{{ drupal_composer_install_dir }}/web"
+
+# Don't install Drupal.
+drupal_install_site: false
+
+
+# Set the domain for this site appropriately.
+drupal_domain: "world-wide-web.xyz"
+vagrant_hostname: "{{ drupal_domain }}"
+
+# Only add the production docroot virtualhost.
+nginx_hosts:
+  - server_name: "{{ drupal_domain }} www.{{ drupal_domain }}"
+    root: "{{ drupal_core_path }}"
+    is_php: true

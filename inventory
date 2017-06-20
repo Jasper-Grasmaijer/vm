@@ -1,0 +1,2 @@
+[drupalvm]
+172.104.155.10 ansible_ssh_user=jazzper_admin
